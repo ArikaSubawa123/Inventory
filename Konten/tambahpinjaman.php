@@ -1,0 +1,100 @@
+<nav aria-label="breadcrumb" class="pt-5">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">List</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/Inventory/Index.php?p=Peminjaman">Data</a></li>
+      <li class="breadcrumb-item">Add</li>
+    </ol>
+  </div>
+</nav>
+<div class="container">
+  <div class="container" style="background: #f5f5f5;">
+    <h3 class="pt-2 mb-2">Tambah Peminjam</h3>
+    <br>
+    <form action="aksitambahpeminjaman.php" enctype="multipart/form-data" method="post" accept-charset="utf-8" class="pb-5">
+      <div class="row">
+        <div class="col-md-2">
+          <label><b>Peminjam</b></label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group" id="namebrg">
+                <input type="text" class="form-control" placeholder="Peminjam.." aria-label="Peminjam.." aria-describedby="button-addon2" name="peminjm">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label><b>Tanggal Pinjam</b></label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <input type="date" class="form-control" placeholder="Date.." aria-label="Date.." aria-describedby="button-addon2" name="tgl_pinjam">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label><b>Nama Barang</b></label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1" name="id_barang">
+              <?php 
+                $query = "select * from barang order by nama_barang";
+                $sql = mysqli_query($koneksi,$query);
+                while ($brg = mysqli_fetch_array($sql)) {
+                  # code...
+                  echo "<option value=$brg[id_barang]>$brg[nama_barang]</option>";
+                }
+               ?>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label><b>Jumlah Barang</b></label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <input type="number" class="form-control" placeholder="Jumlah Barang.." aria-label="Jumlah Barang.." aria-describedby="button-addon2" name="jmlbrg">
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-md-2">
+          <label><b>Tanggal Kembali</b></label>
+        </div>
+        <div class="col-md-9">
+          <div class="input-group" id="namebrg">
+                <input type="date" class="form-control" placeholder="Date.." aria-label="Date.." aria-describedby="button-addon2" name="tglmsk">
+              </div>
+        </div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-md-2">
+          <label><b>Kondisi</b></label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1" name="kndisi">
+              <?php 
+                //$query1 = "select kondisi from barang order by id_barang";
+               // $sql1 = mysqli_query($koneksi,$query1);
+                //while ($sply = mysqli_fetch_array($sql1)) {
+                  # code...
+                  //echo "<option value=$sply[kondisi]>$sply[kondisi]</option>";
+               ?>
+            </select>
+          </div>
+        </div>
+      </div> -->
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-success">Simpan</button>
+          <a href="http://localhost/Inventory/Index.php?p=Pengadaan" class="btn btn-warning">Cancel</a>
+        </div>
+    </form>
+  </div>
+</div>
